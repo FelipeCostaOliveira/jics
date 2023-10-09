@@ -4,6 +4,8 @@ import time
 from registro import *
 from gerar_chaveamento import equipes
 import random
+from datetime import datetime, timedelta
+
 
 '''frase = "\033[3;0;97m\n        Avaliação Prática -  Programação Orientada a Objetos(POO)\n                   2º ANO - Informática - Matutino\n\n                            Grupo Valhalla\n\nDocente:\n -> Camila Serrão\n\nDiscentes:\n -> Deny Willian de Lima Martins\n -> Felipe Costa de Oliveira \n -> Renan Neponuceno Barroso\n -> Stefano Gabriel Mendonça de Oliveira\n"
 
@@ -50,8 +52,11 @@ while True:
 
   elif quem == 4:
     arquivo = "chaves.txt"
-    sortear = jogos(arquivo)
+    inicio = datetime(2023, 11, 13, 10, 0)
+    sortear = jogos(arquivo, inicio)
     sortear.gerar_jogos()
+    sortear.exibir_jogos()
+    break
                   
           
    

@@ -1,5 +1,6 @@
 import os, sys
 import random
+from datetime import datetime, timedelta
 # --------------RENAN / DENY---------------------#
 class Pessoa:
     def __init__(self, nome, matricula):
@@ -102,8 +103,9 @@ class chave:
                 print(chave)
 
 class jogos(chave):
-    def __init__(self, chaves):
+    def __init__(self, chaves, inicio):
         self.chaves = chaves
+        self.inicio = inicio   
         
     def gerar_jogos(self):
         sorteio_jogos = []
@@ -113,24 +115,32 @@ class jogos(chave):
             for linha in linhas:
                 palavras = linha.split(":")
                 jogos_equipe = palavras[1].split("|")
-                sorteio_jogos.extend(jogos_equipe)  # Use extend para adicionar as equipes individuais
-
+                sorteio_jogos.extend(jogos_equipe)
         # Embaralha as equipes
         random.shuffle(sorteio_jogos)
-
         # Divide as equipes em jogos e escreve no arquivo "jogos.txt"
         num = len(sorteio_jogos)
         tam = 2
+        formato_brasil = "%d/%m/%Y %H:%M"
+        inicio_formatado = self.inicio.strftime(formato_brasil)
         with open("jogos.txt", "w", encoding="utf-8") as jgs:
             for i in range(0, num, tam):
-                equipes_do_jogo = sorteio_jogos[i:i+tam]
-                jogo = f"Jogo {i // tam + 1}: {' vs '.join(equipes_do_jogo)}\n"
+                equipes_do_jogo = sorteio_jogos[i:i + tam]
+                # Calcula o horário de término do jogo (90 minutos após o início)
+                termino = self.inicio + timedelta(minutes=30)
+                termino_formatado = termino.strftime(formato_brasil)
+                jogo = f"Jogo {i // tam + 1}: {' vs '.join(equipes_do_jogo)}     Início: {inicio_formatado}   Término: {termino_formatado}\n"
                 jgs.write(jogo)
-                print(jogo)
-
-  
+                
+                # Adicione 30 minutos ao horário de início para o próximo jogo
+                self.inicio = termino + timedelta(minutes=5)
+                
     def exibir_jogos(self):
-        pass
+        with open("jogos.txt", "r", encoding="utf-8") as jogos:
+            conteudo = jogos.read()
+            linhas = conteudo.splitlines()
+            for linha in linhas:
+                print(linha)
 
 
 class gerenciar_cadastro_aluno(Aluno):
