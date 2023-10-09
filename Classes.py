@@ -44,9 +44,7 @@ class Aluno(Pessoa):
         print()
 
     def cadastrar_aluno(self, serie, sala):
-    #cria repositório
-        if not os.path.isdir(sala):
-            os.mkdir(sala)  
+        gerar_dir(sala)
 
         caminho = os.path.join(sala, f"{serie}.txt")
     # Abrir o arquivo em modo de adição
@@ -95,8 +93,9 @@ class chave:
                                 equipes_cadastradas.append(Equipe)
         random.shuffle(equipes_cadastradas)
         num_equipes = len(equipes_cadastradas)
-        
-        with open("chaves.txt", "w", encoding="utf-8") as chvs:
+        gerar_dir("Arquivos")
+        caminho_comp = os.path.join("Arquivos", "chaves.txt")
+        with open(caminho_comp, "w", encoding="utf-8") as chvs:
             for i in range(0, num_equipes, self.tam_chave):
                 chave = f"Chave {i // self.tam_chave + 1}: {' | '.join(equipes_cadastradas[i:i+self.tam_chave])}\n"
                 chvs.write(chave)
@@ -109,6 +108,8 @@ class jogos(chave):
         
     def gerar_jogos(self):
         sorteio_jogos = []
+        
+        
         with open(self.chaves, "r", encoding="utf-8") as jogos:
             conteudo = jogos.read()
             linhas = conteudo.splitlines()
@@ -123,20 +124,22 @@ class jogos(chave):
         tam = 2
         formato_brasil = "%d/%m/%Y %H:%M"
         inicio_formatado = self.inicio.strftime(formato_brasil)
-        with open("jogos.txt", "w", encoding="utf-8") as jgs:
+        gerar_dir("Arquivos")
+        caminho_total = os.path.join("Arquivos", "jogos.txt")
+        with open(caminho_total, "w", encoding="utf-8") as jgs:
             for i in range(0, num, tam):
                 equipes_do_jogo = sorteio_jogos[i:i + tam]
                 # Calcula o horário de término do jogo (90 minutos após o início)
                 termino = self.inicio + timedelta(minutes=30)
                 termino_formatado = termino.strftime(formato_brasil)
-                jogo = f"Jogo {i // tam + 1}: {' vs '.join(equipes_do_jogo)}     Início: {inicio_formatado}   Término: {termino_formatado}\n"
+                jogo = f"Jogo {i // tam + 1}: {' vs '.join(equipes_do_jogo)}     Início:{inicio_formatado}   Término: {termino_formatado}\n"
                 jgs.write(jogo)
                 
                 # Adicione 30 minutos ao horário de início para o próximo jogo
                 self.inicio = termino + timedelta(minutes=5)
                 
-    def exibir_jogos(self):
-        with open("jogos.txt", "r", encoding="utf-8") as jogos:
+    def exibir_jogos(self, path_jogos):
+        with open(path_jogos, "r", encoding="utf-8") as jogos:
             conteudo = jogos.read()
             linhas = conteudo.splitlines()
             for linha in linhas:
@@ -156,7 +159,9 @@ class gerenciar_cadastro_aluno(Aluno):
     def exibir_edicoes(self):
         pass
 
-
+def gerar_dir(diretorio):
+    if not os.path.isdir(diretorio):
+        os.mkdir(diretorio)
 
 
 

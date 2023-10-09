@@ -1,9 +1,9 @@
 from Classes import *
 import cadastro
-import time
+#import time
 from registro import *
 from gerar_chaveamento import equipes
-import random
+#import random
 from datetime import datetime, timedelta
 
 
@@ -51,16 +51,9 @@ while True:
     break
 
   elif quem == 4:
-    arquivo = "chaves.txt"
+    arquivo = "Arquivos/chaves.txt"
+    path_jogos = "Arquivos/jogos.txt"
     inicio = datetime(2023, 11, 13, 10, 0)
     sortear = jogos(arquivo, inicio)
     sortear.gerar_jogos()
-    sortear.exibir_jogos()
-    break
-                  
-          
-   
-        
-      
-
-  
+    sortear.exibir_jogos(path_jogos)
