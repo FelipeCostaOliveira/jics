@@ -3,6 +3,7 @@ import cadastro
 import time
 from registro import *
 from gerar_chaveamento import equipes
+import random
 
 '''frase = "\033[3;0;97m\n        Avaliação Prática -  Programação Orientada a Objetos(POO)\n                   2º ANO - Informática - Matutino\n\n                            Grupo Valhalla\n\nDocente:\n -> Camila Serrão\n\nDiscentes:\n -> Deny Willian de Lima Martins\n -> Felipe Costa de Oliveira \n -> Renan Neponuceno Barroso\n -> Stefano Gabriel Mendonça de Oliveira\n"
 
@@ -42,8 +43,19 @@ while True:
   #elif exclusivo para teste
   elif quem == 3:
     caminho_raiz = os.getcwd()
-    tamanho = 2
+    tamanho = 4
     sistem = chave(caminho_raiz, tamanho)
     sistem.gerar_chave()
     break
-  print("\033[31mResposta inválida, digite 1 ou 2 \033[0;0m")
+
+  elif quem == 4:
+    arquivo = "chaves.txt"
+    sortear = jogos(arquivo)
+    sortear.gerar_jogos()
+                  
+          
+   
+        
+      
+
+  

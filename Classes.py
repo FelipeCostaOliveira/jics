@@ -102,14 +102,33 @@ class chave:
                 print(chave)
 
 class jogos(chave):
-    def __init__(self, chave, hora_inicio, hora_fim, data):
-        self.chave = chave
-        self.hora_inicio = hora_inicio
-        self.hora_fim = hora_fim
-        self.data = data
+    def __init__(self, chaves):
+        self.chaves = chaves
+        
     def gerar_jogos(self):
-        pass
-    
+        sorteio_jogos = []
+        with open(self.chaves, "r", encoding="utf-8") as jogos:
+            conteudo = jogos.read()
+            linhas = conteudo.splitlines()
+            for linha in linhas:
+                palavras = linha.split(":")
+                jogos_equipe = palavras[1].split("|")
+                sorteio_jogos.extend(jogos_equipe)  # Use extend para adicionar as equipes individuais
+
+        # Embaralha as equipes
+        random.shuffle(sorteio_jogos)
+
+        # Divide as equipes em jogos e escreve no arquivo "jogos.txt"
+        num = len(sorteio_jogos)
+        tam = 2
+        with open("jogos.txt", "w", encoding="utf-8") as jgs:
+            for i in range(0, num, tam):
+                equipes_do_jogo = sorteio_jogos[i:i+tam]
+                jogo = f"Jogo {i // tam + 1}: {' vs '.join(equipes_do_jogo)}\n"
+                jgs.write(jogo)
+                print(jogo)
+
+  
     def exibir_jogos(self):
         pass
 

@@ -17,8 +17,9 @@ class registro:
                         for linha in conteudo.splitlines():
                             if linha.strip() == "":
                                 break
-                            if matricula == linha.split(":")[2].replace(", Curso", "").strip():
-                                return True
+                            if len(linha.split(":")) >= 3:
+                                if matricula == linha.split(":")[2].replace(", Curso", "").strip():
+                                    return True
         return False
 
     def exibir_alunos_cadastrados(self, caminho):
