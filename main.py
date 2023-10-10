@@ -52,8 +52,10 @@ while True:
 
   elif quem == 4:
     arquivo = "Arquivos/chaves.txt"
-    path_jogos = "Arquivos/jogos.txt"
+    #path_jogos = "Arquivos/jogos.txt"
     inicio = datetime(2023, 11, 13, 10, 0)
     sortear = jogos(arquivo, inicio)
     sortear.gerar_jogos()
-    sortear.exibir_jogos(path_jogos)
+    sortear.exibir_jogos()
+    break
+  
