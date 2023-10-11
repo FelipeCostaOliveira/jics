@@ -139,23 +139,43 @@ def exibir_alunos_cadastrados():
                  
 
 def editar_aluno(matricula_atual):
-    caminho_diretorio = os.getcwd()
-    for pasta, _, arquivos in os.walk(caminho_diretorio):
-        for arquivo in arquivos:
-            if arquivo in ["professores_cadastrados.txt", "jogos.txt", "chaves.txt"]:
-                continue
-            if arquivo.endswith(".txt"):
-                caminho_arquivo = os.path.join(pasta, arquivo)
-                linhas_filtradas = []
-                with open(caminho_arquivo, "r", encoding="utf-8") as arquivo_txt:
-                    for linha in arquivo_txt:
-                        total = linha.split(":")[2].replace(", Curso", "").strip()
-                        if total[0] != matricula_atual:
-                            linhas_filtradas.append(linha)
-                
-                with open(caminho_arquivo, "w", encoding="utf-8") as arquivo_txt:
-                    arquivo_txt.writelines(linhas_filtradas)
-    cadastro()
+    excluir_aluno(matricula_atual)
+    nome = input("Digite o nome do discente: ").capitalize()
+    matricula = input("Digite a matrícula do discente: ")
+    print(
+      "\n \033[0mCursos disponíveis:\033[0m\n1 - \033[034mInformática\033[0m\n2 - \033[032mEletrotécnica\033[0m\n3 - \033[035mQuímica\033[0m\n4 - \033[031mEdificações\033[0m"
+    )
+    curso = input(
+      "\nDigite o número correspondente ao curso do discente: ").capitalize()
+
+    print(
+      "\n\033[033mTurmas disponíveis:\n\033[0m1 - 1°A\n2 - 1°B\n3 - 2°Mat\n4 - 2°Vesp\n5 - 3°Mat\n6 - 3°Vesp"
+    )
+    turma = input(
+      "Digite o número correspondente à turma do discente: ").capitalize()
+    pessoa = Aluno(nome, matricula, curso, turma)
+    if curso == "1":
+      sala = "Informática"
+    elif curso == "2":
+      sala = "Eletrotécnica"
+    elif curso == "3":
+      sala = "Química"
+    elif curso == "4":
+      sala = "Edificações"
+
+    if turma == "1":
+      serie = "1°A"
+    elif turma == "2":
+      serie = "1°B"
+    elif turma == "3":
+      serie = "2°Mat"
+    elif turma == "4":
+      serie = "2°Vesp"
+    elif turma == "5":
+      serie = "3°Mat"
+    elif turma == "6":
+      serie = "3°Vesp"
+    pessoa.cadastrar_aluno(serie, sala)
 
 def excluir_aluno(matricula_atual):
     caminho_diretorio = os.getcwd()
@@ -169,9 +189,11 @@ def excluir_aluno(matricula_atual):
                 with open(caminho_arquivo, "r", encoding="utf-8") as arquivo_txt:
                     for linha in arquivo_txt:
                         total = linha.split(":")[2].replace(", Curso", "").strip()
-                        if total[0] != matricula_atual:
+                        
+                        if total != matricula_atual:
                             linhas_filtradas.append(linha)
                 
                 with open(caminho_arquivo, "w", encoding="utf-8") as arquivo_txt:
+                    #print(linhas_filtradas)
                     arquivo_txt.writelines(linhas_filtradas)
          
