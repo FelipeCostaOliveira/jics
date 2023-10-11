@@ -1,1 +1,1 @@
- Nome: 2, Número Matrícula: o, Curso: Eletrotécnica Turma: 1°A
+ Nome: Felipe, Número Matrícula: 32, Curso: Eletrotécnica Turma: 1°A

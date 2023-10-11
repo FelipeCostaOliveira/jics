@@ -47,7 +47,7 @@ class Aluno(Pessoa):
         gerar_dir(sala)
 
         caminho = os.path.join(sala, f"{serie}.txt")
-    # Abrir o arquivo em modo de adição
+        # Abrir o arquivo em modo de adição
         with open(caminho, "a", encoding="utf-8") as arquivo :
         # Escrever os dados do aluno no arquivo
             arquivo.write(f" Nome: {self.get_nome()}, Número Matrícula: {self.get_matricula()}, Curso: {sala} Turma: {serie}\n")
@@ -142,6 +142,12 @@ class jogos:
             )
         for jogo in jogos_ordenados:
             print(jogo)
+
+class gerenciar_cadastro_aluno(Aluno):
+    def __init__(self, nome, curso, turma):
+        super().__init__(nome, curso, turma)
+    
+    
 
 # Função para criar um diretório se ele não existir
 def gerar_dir(nome_dir):

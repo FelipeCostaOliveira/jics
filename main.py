@@ -21,26 +21,9 @@ while True:
 
   if quem == 1:
       cadastro.cadastro()
-      
       break
   elif quem == 2:
-      cadastro.cadastro_professor()
-      print("\nAlunos cadastrados: ")
-      
-      caminho_diretorio = os.getcwd()
-      for pasta, _, arquivos in os.walk(caminho_diretorio):
-        for arquivo in arquivos:
-            if arquivo == "professores_cadastrados.txt":
-              continue
-            if arquivo.endswith(".txt"):
-                caminho_arquivo = os.path.join(pasta, arquivo)
-                with open(caminho_arquivo, "r", encoding="utf-8") as arquivo_txt:
-                    conteudo = arquivo_txt.read()
-                    lines = conteudo.splitlines()
-                    for linha in lines:
-                      parte = linha.split(", Curso")
-                      parte_mantida = parte[0]
-                      print(parte_mantida)
+      cadastro.acoes()
       break
   #elif exclusivo para teste
   elif quem == 3:
@@ -58,4 +41,5 @@ while True:
     sortear.gerar_jogos()
     sortear.exibir_jogos()
     break
-  
+  elif quem == 5:
+    cadastro.editar_aluno()

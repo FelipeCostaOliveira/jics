@@ -93,3 +93,85 @@ def cadastro_professor():
   print("\nProfessores cadastrados")
 
   user.exibir_professores_cadastrados()
+
+def acoes():
+  while True:
+    print("Escolha uma opção: ")
+    print("1. Editar aluno")
+    print("2. Excluir aluno")
+    print("3. Exibir edições")
+    print("4. Sair")
+    print("5. Cadastrar-se")
+    print("6. Exibir alunos cadastrados")
+    escolha = int(input("Digite o número da opção desejada"))
+
+    if escolha == 1:
+      matricula_atual = input("Digite a matrícula atual do aluno")
+      editar_aluno(matricula_atual)
+    elif escolha == 2:
+      matricula_atual = input("Digite a matrícula atual do aluno")
+      excluir_aluno(matricula_atual)
+    elif escolha == 3:
+      pass
+    elif escolha == 4:
+      pass
+    elif escolha == 5:
+      cadastro_professor()
+    elif escolha == 6:
+      exibir_alunos_cadastrados()
+    else:
+      print("opção inválida, digite apenas números de 1 a 5")
+
+def exibir_alunos_cadastrados():
+  print("\nAlunos cadastrados: ")
+  caminho_diretorio = os.getcwd()
+  for pasta, _, arquivos in os.walk(caminho_diretorio):
+    for arquivo in arquivos:
+        if arquivo == "professores_cadastrados.txt" or arquivo == "jogos.txt" or arquivo == "chaves.txt":
+          continue
+        if arquivo.endswith(".txt"):
+            caminho_arquivo = os.path.join(pasta, arquivo)
+            with open(caminho_arquivo, "r", encoding="utf-8") as arquivo_txt:
+                conteudo = arquivo_txt.read()
+                lines = conteudo.splitlines()
+                for linha in lines:
+                  print(linha)
+                 
+
+def editar_aluno(matricula_atual):
+    caminho_diretorio = os.getcwd()
+    for pasta, _, arquivos in os.walk(caminho_diretorio):
+        for arquivo in arquivos:
+            if arquivo in ["professores_cadastrados.txt", "jogos.txt", "chaves.txt"]:
+                continue
+            if arquivo.endswith(".txt"):
+                caminho_arquivo = os.path.join(pasta, arquivo)
+                linhas_filtradas = []
+                with open(caminho_arquivo, "r", encoding="utf-8") as arquivo_txt:
+                    for linha in arquivo_txt:
+                        total = linha.split(":")[2].replace(", Curso", "").strip()
+                        if total[0] != matricula_atual:
+                            linhas_filtradas.append(linha)
+                
+                with open(caminho_arquivo, "w", encoding="utf-8") as arquivo_txt:
+                    arquivo_txt.writelines(linhas_filtradas)
+    cadastro()
+
+def excluir_aluno(matricula_atual):
+    caminho_diretorio = os.getcwd()
+    for pasta, _, arquivos in os.walk(caminho_diretorio):
+        for arquivo in arquivos:
+            if arquivo in ["professores_cadastrados.txt", "jogos.txt", "chaves.txt"]:
+                continue
+            if arquivo.endswith(".txt"):
+                caminho_arquivo = os.path.join(pasta, arquivo)
+                linhas_filtradas = []
+                with open(caminho_arquivo, "r", encoding="utf-8") as arquivo_txt:
+                    for linha in arquivo_txt:
+                        total = linha.split(":")[2].replace(", Curso", "").strip()
+                        if total[0] != matricula_atual:
+                            linhas_filtradas.append(linha)
+                
+                with open(caminho_arquivo, "w", encoding="utf-8") as arquivo_txt:
+                    arquivo_txt.writelines(linhas_filtradas)
+         
