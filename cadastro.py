@@ -103,7 +103,8 @@ def acoes():
     print("4. Sair")
     print("5. Cadastrar-se")
     print("6. Exibir alunos cadastrados")
-    escolha = int(input("Digite o número da opção desejada"))
+    print("7. Exibir professores cadastrados")
+    escolha = int(input("Digite o número da opção desejada: "))
 
     if escolha == 1:
       matricula_atual = input("Digite a matrícula atual do aluno")
@@ -114,16 +115,18 @@ def acoes():
     elif escolha == 3:
       pass
     elif escolha == 4:
-      pass
+      break
     elif escolha == 5:
       cadastro_professor()
     elif escolha == 6:
       exibir_alunos_cadastrados()
+    elif escolha == 7:
+      exibir_professores()
     else:
       print("opção inválida, digite apenas números de 1 a 5")
 
 def exibir_alunos_cadastrados():
-  print("\nAlunos cadastrados: ")
+  print("\033[032m\nAlunos cadastrados: \033[0m")
   caminho_diretorio = os.getcwd()
   for pasta, _, arquivos in os.walk(caminho_diretorio):
     for arquivo in arquivos:
@@ -197,3 +200,11 @@ def excluir_aluno(matricula_atual):
                     #print(linhas_filtradas)
                     arquivo_txt.writelines(linhas_filtradas)
          
+def exibir_professores():
+    print("\n\033[032mProfessores Cadastrados \033[0m")
+    caminho_arquivo = os.path.join("Arquivos", "Professores_cadastrados.txt")    
+    with open(caminho_arquivo, "r", encoding="utf-8") as arquivo_txt:
+        conteudo = arquivo_txt.read()
+        lines = conteudo.splitlines()
+        for linha in lines:
+          print(linha)
