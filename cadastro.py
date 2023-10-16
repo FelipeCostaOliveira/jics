@@ -70,60 +70,58 @@ def cadastro_professor():
   nome = input("Digite seu nome: ").capitalize()
 
   matricula_prof = input("Digite seu número de matrícula: ")
-  user = registro(nome, matricula_prof)
-  while not user.validar_matricula(matricula_prof, 5):
-      print("\033[31mMatrícula inválida, digite apenas números com no mínimo 5 algarismos.\033[0m")
-      matricula_prof = input("Digite seu número de matrícula: \n ")
+  funcoes.validar_matricula(matricula_prof, 10)
 
   diretorio_raiz = os.getcwd()
-  while True:
-      if not user.verificar_matricula_em_arquivos(diretorio_raiz, "professores_cadastrados.txt"):
-        break
-      print("\033[31mJá existe um professor cadastrado com essa matrícula.\033[0m")
-      matricula = input("Digite seu número de matrícula: \n ")
+  funcoes.verificar_matricula_em_arquivos(diretorio_raiz, matricula_prof)
 
   senha = input("Digite sua senha: ")
   servidor = professor(nome, matricula_prof, senha)
   prof.append(servidor)
   servidor.cad_professor(senha)
-  print("\nProfessores cadastrados")
+  print("\nCadastro realizado")
+  
 
 def acoes():
+  
+  print("Escolha uma opção: ")
+  print("1. Editar aluno")
+  print("2. Excluir aluno")
+  print("3. Exibir edições")
+  print("4. Sair")
+  print("5. Cadastrar-se")
+  print("6. Exibir alunos cadastrados")
+  print("7. Exibir professores cadastrados")
   while True:
-    print("Escolha uma opção: ")
-    print("1. Editar aluno")
-    print("2. Excluir aluno")
-    print("3. Exibir edições")
-    print("4. Sair")
-    print("5. Cadastrar-se")
-    print("6. Exibir alunos cadastrados")
-    print("7. Exibir professores cadastrados")
-    escolha = int(input("Digite o número da opção desejada: "))
+    try:
+      escolha = int(input("Digite o número da opção desejada: "))
+    
 
-    if escolha == 1:
-      matricula_atual = input("Digite a matrícula atual do aluno")
-      gerenciar = gerenciar_cadastro_aluno(matricula_atual)
-      gerenciar.editar_aluno()
-      break
-    elif escolha == 2:
-      matricula_atual = input("Digite a matrícula atual do aluno")
-      gerenciar = gerenciar_cadastro_aluno(matricula_atual)
-      gerenciar.excluir_aluno()
-      break
-    elif escolha == 3:
-      pass
-      break
-    elif escolha == 4:
-      break
-    elif escolha == 5:
-      cadastro_professor()
-      break
-    elif escolha == 6:
-      funcoes.exibir_alunos_cadastrados()
-      break
-    elif escolha == 7:
-      funcoes.exibir_professores()
-      break
-    else:
-      print("opção inválida, digite apenas números de 1 a 5")
-
+      if escolha == 1:
+        matricula_atual = input("Digite a matrícula atual do aluno")
+        gerenciar = gerenciar_cadastro_aluno(matricula_atual)
+        gerenciar.editar_aluno()
+        break
+      elif escolha == 2:
+        matricula_atual = input("Digite a matrícula atual do aluno")
+        gerenciar = gerenciar_cadastro_aluno(matricula_atual)
+        gerenciar.excluir_aluno()
+        break
+      elif escolha == 3:
+        pass
+        break
+      elif escolha == 4:
+        break
+      elif escolha == 5:
+        cadastro_professor()
+        break
+      elif escolha == 6:
+        funcoes.exibir_alunos_cadastrados()
+        break
+      elif escolha == 7:
+        funcoes.exibir_professores()
+        break
+      else:
+        print("opção inválida, digite apenas números de 1 a 5")
+    except ValueError:
+      print("\033[031mdigite somente números\033[0m")
