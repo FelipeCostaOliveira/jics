@@ -1,6 +1,0 @@
-Chave 1: Jogo 1:  Informática-3°Vesp  vs  Informática-1°B Início: 13/11/2023 10:00 Término: 13/11/2023 10:30
-Chave 2: Jogo 2:  Eletrotécnica-3°Mat  vs  Informática-1°A  Início: 13/11/2023 10:35 Término: 13/11/2023 11:05
-Chave 3: Jogo 3:  Informática-2°Mat  vs  Eletrotécnica-2°Vesp Início: 13/11/2023 11:10 Término: 13/11/2023 11:40
-Chave 1: Jogo 4:  Eletrotécnica-2°Vesp vs  Informática-1°B Início: 13/11/2023 11:45 Término: 13/11/2023 12:15
-Chave 2: Jogo 5:  Eletrotécnica-3°Mat  vs  Eletrotécnica-1°B  Início: 13/11/2023 12:20 Término: 13/11/2023 12:50
-Chave 3: Jogo 6:  Informática-1°A  vs  Eletrotécnica-2°Vesp Início: 13/11/2023 12:55 Término: 13/11/2023 13:25

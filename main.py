@@ -1,7 +1,7 @@
 from Classes import *
 import cadastro
 #import time
-from registro import *
+from funcoes import *
 from gerar_chaveamento import equipes
 #import random
 from datetime import datetime, timedelta
