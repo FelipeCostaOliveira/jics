@@ -31,6 +31,7 @@ def verificar_matricula_em_arquivos(caminho_diretorio, matricula):
                                 else:
                                     print("\033[31mJá existe um aluno cadastrado com essa matrícula.\033[0m")
                                     matricula = input("Digite a matrícula do discente:\n ")
+                                    return matricula
         
 
 def exibir_alunos_cadastrados():
