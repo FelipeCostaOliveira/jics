@@ -1,0 +1,70 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #3700ff, #da3619, #d45fcb);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #e60b0b00;
+    padding: 40px;
+    width: 30%;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.438);
+}
+/* Estilo para o título */
+h1 {
+    font-size: 36px;
+    color: #fcfcfc;
+    text-align: center;
+}
+
+/* Estilo para o formulário */
+form {
+    text-align: center;
+}
+
+/* Estilo para rótulos */
+label {
+    display: block;
+    font-weight: bold;
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+/* Estilo para campos de entrada de texto e select */
+input[type="text"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #15ff0000;
+    border: 1px solid #ffffff31;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #000000;
+    outline: none;
+    text-align: center;
+}
+
+/* Estilo para o botão de envio */
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}

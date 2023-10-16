@@ -197,3 +197,4 @@ def excluir_aluno(matricula_atual):
                     #print(linhas_filtradas)
                     arquivo_txt.writelines(linhas_filtradas)
          
+

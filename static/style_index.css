@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #3700ff, #da3619, #d45fcb);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.container{
+    background-color: #e60b0b00;
+    padding: 40px;
+    width: 30%;
+    border-radius: 10px;
+   
+}
+
+/* Estilo para o título */
+h1 {
+    font-size: 36px;
+    color: #fcfcfc;
+    text-align: center;
+}
+
+/* Estilo para a lista de links */
+ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+/* Estilo para os links */
+li {
+    margin: 10px 0;
+}
+
+a {
+    display: block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+a:hover {
+    background-color: #0056b3;
+}
