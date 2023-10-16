@@ -62,8 +62,10 @@ class professor(Pessoa):
         def set_senha(self, nova_senha):
           self.__senha = nova_senha
           
-    def cad_professor(self, senha):       
-      with open("professores_cadastrados.txt", "a", encoding="utf-8") as arquivo :
+    def cad_professor(self, senha): 
+      gerar_dir("Arquivo") 
+      caminho = os.path.join("Arquivos", "Professores_cadastrados.txt")     
+      with open(caminho, "a", encoding="utf-8") as arquivo :
         # Escrever os dados do professor no arquivo
         arquivo.write(f" Nome: {self.get_nome()}, Número Matrícula: {self.get_matricula()}, Senha: {senha}\n")
 
