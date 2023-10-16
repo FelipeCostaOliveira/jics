@@ -203,7 +203,6 @@ class gerenciar_cadastro_aluno:
                                 break
                             else:
                                 total = linha.split(":")[2].replace(", Curso", "").strip()
-                                
                                 if total != self.matricula:
                                     linhas_filtradas.append(linha)
                     

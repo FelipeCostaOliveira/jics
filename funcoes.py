@@ -1,13 +1,21 @@
 import os
-class registro:
-    def __init__(self, nome, matricula):
-        self.nome = nome
-        self.matricula = matricula
-        
-    def validar_matricula(self, matricula, x):
-        return matricula.isdigit() and len(matricula) >= x
 
-    def verificar_matricula_em_arquivos(self, caminho_diretorio, matricula):
+def validar_nome(nome):
+    while not nome.replace(" ","").isalpha():
+      print("nome inválido digite apenas letras ou espaços")
+      nome = input("Digite o nome do discente: ").capitalize().strip()
+
+def validar_matricula(matricula, x):
+
+    while True:
+        if matricula.isdigit() and len(matricula) >= x:
+            break
+        else:
+            print("\033[31mMatrícula inválida, digite apenas números com no mínimo 10 algarismos.\033[0m")
+            matricula = input("Digite a matrícula do discente:\n ")
+
+def verificar_matricula_em_arquivos(caminho_diretorio, matricula):
+    while True:
         for pasta, _, arquivos in os.walk(caminho_diretorio):
             for arquivo in arquivos:
                 if arquivo.endswith(".txt"):
@@ -19,9 +27,11 @@ class registro:
                                 break
                             if len(linha.split(":")) >= 3:
                                 if matricula == linha.split(":")[2].replace(", Curso", "").strip():
-                                    return True
-        return False
-
+                                    break
+                                else:
+                                    print("\033[31mJá existe um aluno cadastrado com essa matrícula.\033[0m")
+                                    matricula = input("Digite a matrícula do discente:\n ")
+        
 
 def exibir_alunos_cadastrados():
         print("\033[032m\nAlunos cadastrados: \033[0m")

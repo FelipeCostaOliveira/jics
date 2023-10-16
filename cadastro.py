@@ -5,21 +5,17 @@ import funcoes
 def cadastro():
 
   while True:
-    nome = input("Digite o nome do discente: ").capitalize()
+    nome = input("Digite o nome do discente: ").capitalize().strip()
+    funcoes.validar_nome(nome)
     matricula = input("Digite a matrícula do discente: ")
 
-    user = registro(nome, matricula)
-
-    while not user.validar_matricula(matricula, 10):
-        print("\033[31mMatrícula inválida, digite apenas números com no mínimo 10 algarismos.\033[0m")
-        matricula = input("Digite a matrícula do discente:\n ")
+    funcoes.validar_matricula(matricula, 10)
+        
 
     diretorio_raiz = os.getcwd()
-    while True:
-      if not user.verificar_matricula_em_arquivos(diretorio_raiz, matricula):
-        break
-      print("\033[31mJá existe um aluno cadastrado com essa matrícula.\033[0m")
-      matricula = input("Digite a matrícula do discente:\n ")
+    
+    funcoes.verificar_matricula_em_arquivos(diretorio_raiz, matricula)
+        
 
     print(
       "\n \033[0mCursos disponíveis:\033[0m\n1 - \033[034mInformática\033[0m\n2 - \033[032mEletrotécnica\033[0m\n3 - \033[035mQuímica\033[0m\n4 - \033[031mEdificações\033[0m"
