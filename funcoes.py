@@ -1,5 +1,6 @@
 import os
 
+
 def validar_nome(nome):
     while not nome.replace(" ","").isalpha():
       print("nome inválido digite apenas letras ou espaços")
@@ -26,13 +27,12 @@ def verificar_matricula_em_arquivos(caminho_diretorio, matricula):
                             if linha.strip() == "":
                                 break
                             if len(linha.split(":")) >= 3:
-                                if matricula == linha.split(":")[2].replace(", Curso", "").strip():
-                                    break
-                                else:
+                                while matricula == linha.split(":")[2].replace(", Curso", "").strip():
                                     print("\033[31mJá existe um aluno cadastrado com essa matrícula.\033[0m")
                                     matricula = input("Digite a matrícula do discente:\n ")
-                                    return matricula
-        
+                                    
+        break
+
 
 def exibir_alunos_cadastrados():
         print("\033[032m\nAlunos cadastrados: \033[0m")

@@ -15,7 +15,8 @@ def cadastro():
     diretorio_raiz = os.getcwd()
     
     funcoes.verificar_matricula_em_arquivos(diretorio_raiz, matricula)
-        
+       
+      
 
     print(
       "\n \033[0mCursos disponíveis:\033[0m\n1 - \033[034mInformática\033[0m\n2 - \033[032mEletrotécnica\033[0m\n3 - \033[035mQuímica\033[0m\n4 - \033[031mEdificações\033[0m"
