@@ -45,6 +45,7 @@ while True:
       break
     elif quem == 5:
       cadastro.editar_aluno()
+
         
   except ValueError:
     print("\033[031mdigite somente números\033[0m")

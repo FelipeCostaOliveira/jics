@@ -68,7 +68,7 @@ def cadastro():
 def cadastro_professor():
   prof = []
   nome = input("Digite seu nome: ").capitalize()
-
+  funcoes.validar_nome(nome)
   matricula_prof = input("Digite seu número de matrícula: ")
   funcoes.validar_matricula(matricula_prof, 5)
 
@@ -109,9 +109,8 @@ def acoes():
         break
       elif escolha == 3:
         pass
-        break
       elif escolha == 4:
-        break
+        pass
       elif escolha == 5:
         cadastro_professor()
         break

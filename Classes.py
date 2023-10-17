@@ -149,43 +149,80 @@ class jogos:
 class gerenciar_cadastro_aluno:
     def __init__(self, matricula):
         self.matricula = matricula
-      
-    def editar_aluno(self):
-        self.excluir_aluno(self)
-        nome = input("Digite o nome do discente: ").capitalize()
-        matricula = input("Digite a matrícula do discente: ")
-        print(
-        "\n \033[0mCursos disponíveis:\033[0m\n1 - \033[034mInformática\033[0m\n2 - \033[032mEletrotécnica\033[0m\n3 - \033[035mQuímica\033[0m\n4 - \033[031mEdificações\033[0m"
-        )
-        curso = input(
-        "\nDigite o número correspondente ao curso do discente: ").capitalize()
 
-        print(
-        "\n\033[033mTurmas disponíveis:\n\033[0m1 - 1°A\n2 - 1°B\n3 - 2°Mat\n4 - 2°Vesp\n5 - 3°Mat\n6 - 3°Vesp"
-        )
-        turma = input(
-        "Digite o número correspondente à turma do discente: ").capitalize()
-        pessoa = Aluno(nome, matricula, curso, turma)
-        if curso == "1":
-            sala = "Informática"
-        elif curso == "2":
-            sala = "Eletrotécnica"
-        elif curso == "3":
-            sala = "Química"
-        elif curso == "4":
-            sala = "Edificações"
-        if turma == "1":
-            serie = "1°A"
-        elif turma == "2":
-            serie = "1°B"
-        elif turma == "3":
-            serie = "2°Mat"
-        elif turma == "4":
-            serie = "2°Vesp"
-        elif turma == "5":
-            serie = "3°Mat"
-        elif turma == "6":
-            serie = "3°Vesp"
+    def editar_aluno(self):
+
+        cursos = {
+            "1": "Informática",
+            "2": "Eletrotécnica",
+            "3": "Química",
+            "4": "Edificações"
+        }
+        turmas = {
+            "1": "1°A",
+            "2": "1°B",
+            "3": "2°Mat",
+            "4": "2°Vesp",
+            "5": "3°Mat",
+            "6": "3°Vesp"
+        }
+
+        caminho_diretorio = os.getcwd()
+        nome_atual = ""
+        matricula_atual = ""
+        curso_atual = ""
+        turma_atual = ""
+
+        for pasta, _, arquivos in os.walk(caminho_diretorio):
+            for arquivo in arquivos:
+                if arquivo in ["professores_cadastrados.txt", "jogos.txt", "chaves.txt"]:
+                    continue
+                if arquivo.endswith(".txt"):
+                    caminho_arquivo = os.path.join(pasta, arquivo)
+                    with open(caminho_arquivo, "r", encoding="utf-8") as arquivo_txt:
+                        for linha in arquivo_txt:
+                            partes = linha.split(":")
+                            if len(partes) < 3:
+                                continue
+                            matricula_na_linha = partes[2].replace(", Curso", "").strip()
+                            if matricula_na_linha == self.matricula:
+                                nome_atual = partes[1].replace(", Número Matrícula", "").strip()
+                                matricula_atual = linha.split(":")[2].replace(", Curso", "").strip()
+                                curso_atual = linha.split(":")[3].replace(" Turma", "").strip()
+                                turma_atual = linha.split(":")[4].strip()
+                                print(
+                                    f"nome= {nome_atual} matricula= {matricula_atual} curso= {curso_atual} turma= {turma_atual}")
+        self.excluir_aluno()
+        novo_nome = nome_atual
+        nova_matricula = matricula_atual
+        # novo_curso = curso_atual
+        # nova_turma = turma_atual
+        sala = curso_atual
+        serie = turma_atual
+        trocar_nome = int(input("Deseja trocar o nome? (digite 1 p/sim ou 2 p/não)"))
+        if trocar_nome == 1:
+            novo_nome = input("Digite o novo nome: ")
+
+        trocar_matricula = int(input("Deseja trocar a matrícula? (digite 1 p/sim ou 2 p/não)"))
+        if trocar_matricula == 1:
+            nova_matricula = input("Digite a nova matricula: ")
+
+        trocar_curso = int(input("Deseja trocar o curso? (digite 1 p/sim ou 2 p/não)"))
+        if trocar_curso == 1:
+            print("\nCursos disponíveis:")
+            for key, value in cursos.items():
+                print(f"{key} - {value}")
+            novo_curso = input("\nDigite o número correspondente ao curso do discente: ").capitalize()
+            sala = cursos[novo_curso]
+        trocar_turma = int(input("Deseja trocar a turma? (digite 1 p/sim ou 2 p/não)"))
+        if trocar_turma == 1:
+            print("\nTurmas disponíveis:")
+            for key, value in turmas.items():
+                print(f"{key} - {value}")
+            nova_turma = input("Digite o número correspondente à turma do discente: ").capitalize()
+            serie = turmas[nova_turma]
+
+        pessoa = Aluno(novo_nome, nova_matricula, sala, serie)
         pessoa.cadastrar_aluno(serie, sala)
 
     def excluir_aluno(self):
@@ -207,8 +244,6 @@ class gerenciar_cadastro_aluno:
                                     linhas_filtradas.append(linha)
                     
                     with open(caminho_arquivo, "w", encoding="utf-8") as arquivo_txt:
-                        #print(linhas_filtradas)
                         arquivo_txt.writelines(linhas_filtradas)
-        
 
 
