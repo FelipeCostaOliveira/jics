@@ -70,7 +70,7 @@ def cadastro_professor():
   nome = input("Digite seu nome: ").capitalize()
 
   matricula_prof = input("Digite seu número de matrícula: ")
-  funcoes.validar_matricula(matricula_prof, 10)
+  funcoes.validar_matricula(matricula_prof, 5)
 
   diretorio_raiz = os.getcwd()
   funcoes.verificar_matricula_em_arquivos(diretorio_raiz, matricula_prof)

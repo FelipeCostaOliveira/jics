@@ -2,7 +2,7 @@ import os
 
 
 def validar_nome(nome):
-    while not nome.replace(" ","").isalpha():
+    while not nome.replace(" ", "").isalpha():
       print("nome inválido digite apenas letras ou espaços")
       nome = input("Digite o nome do discente: ").capitalize().strip()
 
@@ -12,7 +12,7 @@ def validar_matricula(matricula, x):
         if matricula.isdigit() and len(matricula) >= x:
             break
         else:
-            print("\033[31mMatrícula inválida, digite apenas números com no mínimo 10 algarismos.\033[0m")
+            print(f"\033[31mMatrícula inválida, digite apenas números com no mínimo {x} algarismos.\033[0m")
             matricula = input("Digite a matrícula do discente:\n ")
 
 def verificar_matricula_em_arquivos(caminho_diretorio, matricula):
