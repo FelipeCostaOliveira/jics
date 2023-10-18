@@ -29,22 +29,11 @@ while True:
         break
     #elif exclusivo para teste
     elif quem == 3:
-      caminho_raiz = os.getcwd()
-      tamanho = 4
-      sistem = chave(caminho_raiz, tamanho)
-      sistem.gerar_chave()
-      break
+      pass
 
     elif quem == 4:
-      arquivo = "Arquivos/chaves.txt"
-      #path_jogos = "Arquivos/jogos.txt"
-      inicio = datetime(2023, 11, 13, 10, 0)
-      sortear = jogos(arquivo, inicio)
-      sortear.gerar_jogos()
-      sortear.exibir_jogos()
-      break
-    elif quem == 5:
-      cadastro.editar_aluno()
+      pass
+
 
         
   except ValueError:

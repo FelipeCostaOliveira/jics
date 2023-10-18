@@ -1,126 +1,119 @@
 from Classes import *
-from funcoes import *
 import os
 import funcoes
-def cadastro():
 
+
+def cadastro():
+  cursos = {
+    "1": "Informática",
+    "2": "Eletrotécnica",
+    "3": "Química",
+    "4": "Edificações",
+  }
+  turmas = {
+    "1": "1°A",
+    "2": "1°B",
+    "3": "2°Mat",
+    "4": "2°Vesp",
+    "5": "3°Mat",
+    "6": "3°Vesp",
+  }
   while True:
     nome = input("Digite o nome do discente: ").capitalize().strip()
     funcoes.validar_nome(nome)
     matricula = input("Digite a matrícula do discente: ")
-
     funcoes.validar_matricula(matricula, 10)
-        
-
     diretorio_raiz = os.getcwd()
-    
     funcoes.verificar_matricula_em_arquivos(diretorio_raiz, matricula)
-       
-      
-
-    print(
-      "\n \033[0mCursos disponíveis:\033[0m\n1 - \033[034mInformática\033[0m\n2 - \033[032mEletrotécnica\033[0m\n3 - \033[035mQuímica\033[0m\n4 - \033[031mEdificações\033[0m"
-    )
-    curso = input(
-      "\nDigite o número correspondente ao curso do discente: ").capitalize()
-
-    print(
-      "\n\033[033mTurmas disponíveis:\n\033[0m1 - 1°A\n2 - 1°B\n3 - 2°Mat\n4 - 2°Vesp\n5 - 3°Mat\n6 - 3°Vesp"
-    )
-    turma = input(
-      "Digite o número correspondente à turma do discente: ").capitalize()
-
-    pessoa = Aluno(nome, matricula, curso, turma)
-    print("\n\u001b[1m\033[032mCadastro realizado com sucesso!\033[0m\n")
-
-    if curso == "1":
-      sala = "Informática"
-    elif curso == "2":
-      sala = "Eletrotécnica"
-    elif curso == "3":
-      sala = "Química"
-    elif curso == "4":
-      sala = "Edificações"
-
-    if turma == "1":
-      serie = "1°A"
-    elif turma == "2":
-      serie = "1°B"
-    elif turma == "3":
-      serie = "2°Mat"
-    elif turma == "4":
-      serie = "2°Vesp"
-    elif turma == "5":
-      serie = "3°Mat"
-    elif turma == "6":
-      serie = "3°Vesp"
-
-
-    pessoa.cadastrar_aluno(serie, sala)
-
+    print("\nCursos disponíveis:")
+    for key, value in cursos.items():
+      print(f"{key} - {value}")
+    curso = input("\nDigite o número correspondente ao curso do discente: ").capitalize()
+    print("\nTurmas disponíveis:")
+    for key, value in turmas.items():
+      print(f"{key} - {value}")
+    turma = input("Digite o número correspondente à turma do discente: ").capitalize()
+    if curso in cursos and turma in turmas:
+      sala = cursos[curso]
+      serie = turmas[turma]
+      pessoa = Aluno(nome, matricula, sala, serie)
+      pessoa.cadastrar_aluno(serie, sala)
+    else:
+      print("Opção de curso ou turma inválida.")
     repetir = input("Deseja realizar um novo cadastro?\n1 - \033[032mSim\n\033[0m2 - \033[031mNão \033[0m")
     if repetir == '2':
       break
   print("\n\u001b[1m\033[032mCadastros Realizados na sua turma:\033[0m\n")
- 
 
 
 def cadastro_professor():
-  prof = []
-  nome = input("Digite seu nome: ").capitalize()
-  funcoes.validar_nome(nome)
-  matricula_prof = input("Digite seu número de matrícula: ")
-  funcoes.validar_matricula(matricula_prof, 5)
+    prof = []
+    nome = input("Digite seu nome: ").capitalize()
+    funcoes.validar_nome(nome)
+    matricula_prof = input("Digite seu número de matrícula: ")
+    funcoes.validar_matricula(matricula_prof, 5)
+    diretorio_raiz = os.getcwd()
+    funcoes.verificar_matricula_em_arquivos(diretorio_raiz, matricula_prof)
+    senha = input("Digite sua senha: ")
+    servidor = professor(nome, matricula_prof, senha)
+    prof.append(servidor)
+    servidor.cad_professor(senha)
+    print("\nCadastro realizado")
 
-  diretorio_raiz = os.getcwd()
-  funcoes.verificar_matricula_em_arquivos(diretorio_raiz, matricula_prof)
-
-  senha = input("Digite sua senha: ")
-  servidor = professor(nome, matricula_prof, senha)
-  prof.append(servidor)
-  servidor.cad_professor(senha)
-  print("\nCadastro realizado")
-  
 
 def acoes():
-  
-  print("Escolha uma opção: ")
-  print("1. Editar aluno")
-  print("2. Excluir aluno")
-  print("3. Exibir edições")
-  print("4. Sair")
-  print("5. Cadastrar-se")
-  print("6. Exibir alunos cadastrados")
-  print("7. Exibir professores cadastrados")
-  while True:
-    try:
-      escolha = int(input("Digite o número da opção desejada: "))
-    
-
-      if escolha == 1:
-        matricula_atual = input("Digite a matrícula atual do aluno")
-        gerenciar = gerenciar_cadastro_aluno(matricula_atual)
-        gerenciar.editar_aluno()
-        break
-      elif escolha == 2:
-        matricula_atual = input("Digite a matrícula atual do aluno")
-        gerenciar = gerenciar_cadastro_aluno(matricula_atual)
-        gerenciar.excluir_aluno()
-        break
-      elif escolha == 3:
-        pass
-      elif escolha == 4:
-        pass
-      elif escolha == 5:
-        cadastro_professor()
-        break
-      elif escolha == 6:
-        funcoes.exibir_alunos_cadastrados()
-        break
-      elif escolha == 7:
-        funcoes.exibir_professores()
-        break
-      else:
-        print("opção inválida, digite apenas números de 1 a 5")
-    except ValueError:
-      print("\033[031mdigite somente números\033[0m")
+    print("Escolha uma opção: ")
+    print("1. Cadastrar-se")
+    print("2. Editar aluno")
+    print("3. Excluir aluno")
+    print("4. Gerar chaveamento")
+    print("5. Exibir professores cadastrados")
+    print("6. Exibir alunos cadastrados")
+    print("7. Gerar jogos")
+    print("8. Sair")
+    while True:
+        try:
+          escolha = int(input("Digite o número da opção desejada: "))
+          if escolha == 1:
+            # cadastrar-se
+            cadastro_professor()
+            break
+          elif escolha == 2:
+            # editar aluno
+            matricula_atual = input("Digite a matrícula atual do aluno: ")
+            gerenciar = gerenciar_cadastro_aluno(matricula_atual)
+            gerenciar.editar_aluno()
+            break
+          elif escolha == 3:
+            # excluir aluno
+            matricula_atual = input("Digite a matrícula atual do aluno: ")
+            gerenciar = gerenciar_cadastro_aluno(matricula_atual)
+            gerenciar.excluir_aluno()
+            break
+          elif escolha == 4:
+            # gerar chaveamento
+            caminho_raiz = os.getcwd()
+            tamanho = 4
+            sistem = chave(caminho_raiz, tamanho)
+            sistem.gerar_chave()
+          elif escolha == 5:
+            # exibir professores cadastrados
+            funcoes.exibir_professores()
+          elif escolha == 6:
+            # exibir alunos cadastrados
+            funcoes.exibir_alunos_cadastrados()
+            break
+          elif escolha == 7:
+              arquivo = "Arquivos/chaves.txt"
+              inicio = datetime(2023, 11, 13, 10, 0)
+              sortear = jogos(arquivo, inicio)
+              sortear.gerar_jogos()
+              sortear.exibir_jogos()
+              break
+          elif escolha == 8:
+            # sair
+            break
+          else:
+            print("opção inválida, digite apenas números de 1 a 5")
+        except ValueError:
+            print("\033[031mdigite somente números\033[0m")

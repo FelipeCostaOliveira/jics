@@ -191,12 +191,11 @@ class gerenciar_cadastro_aluno:
                                 curso_atual = linha.split(":")[3].replace(" Turma", "").strip()
                                 turma_atual = linha.split(":")[4].strip()
                                 print(
-                                    f"nome= {nome_atual} matricula= {matricula_atual} curso= {curso_atual} turma= {turma_atual}")
+                                    f"nome= {nome_atual} matricula= {matricula_atual} "
+                                    f"curso= {curso_atual} turma= {turma_atual}")
         self.excluir_aluno()
         novo_nome = nome_atual
         nova_matricula = matricula_atual
-        # novo_curso = curso_atual
-        # nova_turma = turma_atual
         sala = curso_atual
         serie = turma_atual
         trocar_nome = int(input("Deseja trocar o nome? (digite 1 p/sim ou 2 p/não)"))
@@ -236,14 +235,9 @@ class gerenciar_cadastro_aluno:
                     linhas_filtradas = []
                     with open(caminho_arquivo, "r", encoding="utf-8") as arquivo_txt:
                         for linha in arquivo_txt:
-                            if linha not in arquivo_txt:
-                                break
-                            else:
-                                total = linha.split(":")[2].replace(", Curso", "").strip()
-                                if total != self.matricula:
-                                    linhas_filtradas.append(linha)
-                    
+                            total = linha.split(":")[2].replace(", Curso", "").strip()
+                            if total != self.matricula:
+                                linhas_filtradas.append(linha)
+
                     with open(caminho_arquivo, "w", encoding="utf-8") as arquivo_txt:
                         arquivo_txt.writelines(linhas_filtradas)
-
-

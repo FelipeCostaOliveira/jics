@@ -1,0 +1,2 @@
+Chave 1: Edificações-1°B | Informática-1°A | Química-1°A | Eletrotécnica-1°A
+Chave 2: Eletrotécnica-1°B | Edificações-1°A | Informática-1°B | Química-1°B
