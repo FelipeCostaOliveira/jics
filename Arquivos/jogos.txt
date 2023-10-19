@@ -1,6 +1,18 @@
-Chave 1: Jogo 1:  Informática-2°Mat vs  Edificações-1°B  Início: 13/11/2023 10:00 Término: 13/11/2023 10:30
-Chave 2: Jogo 2:  Informática-1°A vs  Eletrotécnica-1°A Início: 13/11/2023 10:35 Término: 13/11/2023 11:05
-Chave 3: Jogo 3:  Eletrotécnica-1°A vs  Química-1°A  Início: 13/11/2023 11:10 Término: 13/11/2023 11:40
-Chave 1: Jogo 4:  Eletrotécnica-1°B  vs  Informática-1°B  Início: 13/11/2023 11:45 Término: 13/11/2023 12:15
-Chave 2: Jogo 5:  Informática-3°Mat  vs  Eletrotécnica-1°A Início: 13/11/2023 12:20 Término: 13/11/2023 12:50
-Chave 3: Jogo 6:  Eletrotécnica-1°A vs  Informática-2°Mat Início: 13/11/2023 12:55 Término: 13/11/2023 13:25
+Chave 1:  Informática-3°Mat  vs  Informática-3°Vesp  Início: 13/11/2023 10:00 Término: 13/11/2023 10:30
+Chave 1:  Informática-3°Mat  vs  Edificações-1°B  Início: 13/11/2023 10:35 Término: 13/11/2023 11:05
+Chave 1:  Informática-3°Mat  vs  Edificações-1°A Início: 13/11/2023 11:10 Término: 13/11/2023 11:40
+Chave 1:  Informática-3°Vesp  vs  Edificações-1°B  Início: 13/11/2023 11:45 Término: 13/11/2023 12:15
+Chave 1:  Informática-3°Vesp  vs  Edificações-1°A Início: 13/11/2023 12:20 Término: 13/11/2023 12:50
+Chave 1:  Edificações-1°B  vs  Edificações-1°A Início: 13/11/2023 12:55 Término: 13/11/2023 13:25
+Chave 2:  Eletrotécnica-1°A  vs  Química-1°B  Início: 13/11/2023 13:30 Término: 13/11/2023 14:00
+Chave 2:  Eletrotécnica-1°A  vs  Edificações-3°Vesp  Início: 13/11/2023 14:05 Término: 13/11/2023 14:35
+Chave 2:  Eletrotécnica-1°A  vs  Informática-2°Mat Início: 13/11/2023 14:40 Término: 13/11/2023 15:10
+Chave 2:  Química-1°B  vs  Edificações-3°Vesp  Início: 13/11/2023 15:15 Término: 13/11/2023 15:45
+Chave 2:  Química-1°B  vs  Informática-2°Mat Início: 13/11/2023 15:50 Término: 13/11/2023 16:20
+Chave 2:  Edificações-3°Vesp  vs  Informática-2°Mat Início: 13/11/2023 16:25 Término: 13/11/2023 16:55
+Chave 3:  Química-1°A  vs  Eletrotécnica-1°B  Início: 13/11/2023 17:00 Término: 13/11/2023 17:30
+Chave 3:  Química-1°A  vs  Química-2°Mat  Início: 13/11/2023 17:35 Término: 13/11/2023 18:05
+Chave 3:  Química-1°A  vs  Informática-1°B Início: 13/11/2023 18:10 Término: 13/11/2023 18:40
+Chave 3:  Eletrotécnica-1°B  vs  Química-2°Mat  Início: 13/11/2023 18:45 Término: 13/11/2023 19:15
+Chave 3:  Eletrotécnica-1°B  vs  Informática-1°B Início: 13/11/2023 19:20 Término: 13/11/2023 19:50
+Chave 3:  Química-2°Mat  vs  Informática-1°B Início: 13/11/2023 19:55 Término: 13/11/2023 20:25

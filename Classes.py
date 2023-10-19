@@ -107,11 +107,11 @@ class chave:
 class jogos:
     def __init__(self, chaves, inicio):
         self.chaves = chaves
-        self.inicio = inicio   
+        self.inicio = inicio
         self.jogos = {}
-    
+
     def gerar_jogos(self):
-        sorteio_jogos = {}  
+        sorteio_jogos = {}
         with open(self.chaves, "r", encoding="utf-8") as arquivo_chaves:
             conteudo = arquivo_chaves.read()
             linhas = conteudo.splitlines()
@@ -119,30 +119,49 @@ class jogos:
                 palavras = linha.split(":")
                 chave, equipes = palavras[0], palavras[1].split("|")
                 sorteio_jogos[chave] = equipes
-        
+
         formato_brasil = "%d/%m/%Y %H:%M"
         funcoes.gerar_dir("Arquivos")
         caminho_total = os.path.join("Arquivos", "jogos.txt")
         chaves = list(sorteio_jogos)
+
         with open(caminho_total, "w", encoding="utf-8") as jgs:
-            for i in range(len(sorteio_jogos) * (len(sorteio_jogos) - 1)):
-                chave1, chave2 = chaves[i % len(chaves)], chaves[(i + 1) % len(chaves)]
-                equipe1, equipe2 = random.choice(sorteio_jogos[chave1]), random.choice(sorteio_jogos[chave2])
-                inicio_formatado = self.inicio.strftime(formato_brasil)
-                termino = self.inicio + timedelta(minutes=30)
-                termino_formatado = termino.strftime(formato_brasil)
-                jogo = f"{chave1}: Jogo {i + 1}: {equipe1} vs {equipe2} Início: {inicio_formatado} Término: {termino_formatado}\n"
-                jgs.write(jogo)
-                self.inicio = termino + timedelta(minutes=5)
-                if chave1 not in self.jogos:
-                    self.jogos[chave1] = []
-                self.jogos[chave1].append(jogo)
-        
+            for chave in chaves:
+                equipes_chave = sorteio_jogos[chave]
+                num_equipes = len(equipes_chave)
+
+                for i in range(num_equipes):
+                    for j in range(i + 1, num_equipes):
+                        equipe1 = equipes_chave[i]
+                        equipe2 = equipes_chave[j]
+                        inicio_formatado = self.inicio.strftime(formato_brasil)
+                        termino = self.inicio + timedelta(minutes=30)
+                        termino_formatado = termino.strftime(formato_brasil)
+                        jogo = f"{chave}: {equipe1} vs {equipe2} Início: {inicio_formatado} Término: {termino_formatado}\n"
+                        jgs.write(jogo)
+                        self.inicio = termino + timedelta(minutes=5)
+                        if chave not in self.jogos:
+                            self.jogos[chave] = []
+                        self.jogos[chave].append(jogo)
     def exibir_jogos(self):
-        jogos_ordenados = sorted(
-                [jogo for jogos in self.jogos.values() for jogo in jogos],
-                key=lambda x: int(x.split(": Jogo ")[1].split(":")[0]),
-            )
+        jogos_ordenados = []
+
+        with open(self.chaves, "r", encoding="utf-8") as arquivo_chaves:
+            conteudo = arquivo_chaves.read()
+            linhas = conteudo.splitlines()
+            for linha in linhas:
+                palavras = linha.split(":")
+                if len(palavras) >= 2:
+                    chave = palavras[0]
+                    equipes = palavras[1].split("|")
+                    if len(equipes) >= 2:
+                        for i in range(len(equipes)):
+                            for j in range(i + 1, len(equipes)):
+                                jogo = f"{chave}: Jogo {i + 1} - {equipes[i]} vs {equipes[j]}"
+                                jogos_ordenados.append(jogo)
+
+        jogos_ordenados = sorted(jogos_ordenados, key=lambda x: int(x.split(": Jogo ")[1].split(" -")[0]))
+
         for jogo in jogos_ordenados:
             print(jogo)
 
