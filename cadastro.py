@@ -109,6 +109,7 @@ def acoes():
               sortear = jogos(arquivo, inicio)
               sortear.gerar_jogos()
               sortear.exibir_jogos()
+
               break
           elif escolha == 8:
             # sair
@@ -117,3 +118,6 @@ def acoes():
             print("opção inválida, digite apenas números de 1 a 5")
         except ValueError:
             print("\033[031mdigite somente números\033[0m")
+
+
+
