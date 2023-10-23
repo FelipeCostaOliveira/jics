@@ -93,6 +93,8 @@ class Chave:
                     with open(caminho_arquivo, "r", encoding="utf-8") as arq_txt:
                         conteudo = arq_txt.read()
                         linhas = conteudo.splitlines()
+                        if len(linhas) < 3:
+                            break
                         for linha in linhas:
                             if "Curso:" in linha:
                                 palavras = linha.split()  # Dividir a linha em palavras

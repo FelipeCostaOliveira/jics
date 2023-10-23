@@ -130,9 +130,9 @@ def acoes():
             # sair
             break
           else:
-            print("opção inválida, digite apenas números de 1 a 5")
+            print("Opção inválida, digite apenas números de 1 a 8")
         except ValueError:
-            print("\033[031mdigite somente números\033[0m")
+            print("\033[031mDigite somente números\033[0m")
 
 
 
