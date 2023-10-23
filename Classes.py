@@ -100,6 +100,8 @@ class Chave:
                                 curso = palavras[indice_curso + 1]
                                 turma = palavras[indice_curso + 3]
                                 Equipe = f"{curso}-{turma}"
+                                if Equipe in equipes_cadastradas:
+                                    break
                                 equipes_cadastradas.append(Equipe)
         random.shuffle(equipes_cadastradas)
         num_equipes = len(equipes_cadastradas)
@@ -153,27 +155,7 @@ class Jogos:
                         self.jogos[chave].append(jogo)
         funcoes.organizar_horarios()
 
-    def exibir_jogos(self):
-        jogos_ordenados = []
 
-        with open(self.chaves, "r", encoding="utf-8") as arquivo_chaves:
-            conteudo = arquivo_chaves.read()
-            linhas = conteudo.splitlines()
-            for linha in linhas:
-                palavras = linha.split(":")
-                if len(palavras) >= 2:
-                    chave = palavras[0]
-                    equipes = palavras[1].split("|")
-                    if len(equipes) >= 2:
-                        for i in range(len(equipes)):
-                            for j in range(i + 1, len(equipes)):
-                                jogo = f"{chave}: Jogo {i + 1} - {equipes[i]} vs {equipes[j]}"
-                                jogos_ordenados.append(jogo)
-
-        jogos_ordenados = sorted(jogos_ordenados, key=lambda x: int(x.split(": Jogo ")[1].split(" -")[0]))
-
-        for jogo in jogos_ordenados:
-            print(jogo)
 
 
 class GerenciarCadastroAluno:

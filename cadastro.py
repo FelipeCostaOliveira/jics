@@ -123,7 +123,7 @@ def acoes():
               inicio = datetime(2023, 11, 13, 10, 0)
               sortear = Jogos(arquivo, inicio)
               sortear.gerar_jogos()
-              sortear.exibir_jogos()
+              funcoes.exibir_jogos()
 
               break
           elif escolha == 8:

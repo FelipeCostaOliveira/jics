@@ -1,1 +1,3 @@
  Nome: Aluno Informática 1°B, Número Matrícula: 120001, Curso: Informática Turma: 1°B
+ Nome: Aluno Informática 1°B, Número Matrícula: 120000000001, Curso: Informática Turma: 1°B
+ Nome: Aluno Informática 1°B, Número Matrícula: 120000000001, Curso: Informática Turma: 1°B

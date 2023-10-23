@@ -96,6 +96,14 @@ def organizar_horarios():
             arquivo_saida.write(f"{jogo} | {hora_jogo}\n")
 
 
+def exibir_jogos():
+    with open("Arquivos/jogos.txt", "r", encoding="utf-8") as arquivo_chaves:
+        conteudo = arquivo_chaves.read()
+        linhas = conteudo.splitlines()
+        for linha in linhas:
+            print(linha)
+
+
 def gerar_dir(nome_dir):
     if not os.path.exists(nome_dir):
         os.makedirs(nome_dir)

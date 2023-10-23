@@ -1,1 +1,3 @@
  Nome: Felipe, Número Matrícula: 1234567890, Curso: Edificações Turma: 1°A
+ Nome: Aluno Edificações 1°A, Número Matrícula: 410000000001, Curso: Edificações Turma: 1°A
+ Nome: Aluno Edificações 1°A, Número Matrícula: 410000000001, Curso: Edificações Turma: 1°A
