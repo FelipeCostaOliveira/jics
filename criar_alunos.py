@@ -20,7 +20,7 @@ def criar_alunos_em_todas_as_turmas():
     for curso_key, curso_nome in cursos.items():
         for turma_key, turma_nome in turmas.items():
             nome = f"Aluno {curso_nome} {turma_nome}"
-            matricula = f"{curso_key}{turma_key}0001"  # Matrícula fictícia
+            matricula = f"{curso_key}{turma_key}0000000001"  # Matrícula fictícia
 
             aluno = Aluno(nome, matricula, curso_nome, turma_nome)
             aluno.cadastrar_aluno(turma_nome, curso_nome)
