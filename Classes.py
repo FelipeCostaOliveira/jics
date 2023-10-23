@@ -132,7 +132,7 @@ class Jogos:
         funcoes.gerar_dir("Arquivos")
         caminho_total = os.path.join("Arquivos", "jogos.txt")
         chaves = list(sorteio_jogos)
-        num_jogo = 1
+
         with open(caminho_total, "w", encoding="utf-8") as jgs:
             for chave in chaves:
                 equipes_chave = sorteio_jogos[chave]
@@ -145,10 +145,9 @@ class Jogos:
                         inicio_formatado = self.inicio.strftime(formato_brasil)
                         termino = self.inicio + timedelta(minutes=30)
                         termino_formatado = termino.strftime(formato_brasil)
-                        jogo = f"{chave}: Jogo:{num_jogo} {equipe1} vs {equipe2} | Início: {inicio_formatado} Término: {termino_formatado}\n"
+                        jogo = f"{chave}: {equipe1} vs {equipe2} | Início: {inicio_formatado} Término: {termino_formatado}\n"
                         jgs.write(jogo)
                         self.inicio = termino + timedelta(minutes=5)
-                        num_jogo += 1
                         if chave not in self.jogos:
                             self.jogos[chave] = []
                         self.jogos[chave].append(jogo)
