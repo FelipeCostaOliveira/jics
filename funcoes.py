@@ -92,8 +92,10 @@ def organizar_horarios():
 
     # Escrever os jogos reorganizados em um novo arquivo
     with open(caminho_jogos, "w", encoding="utf-8") as arquivo_saida:
+        num_jogo = 1
         for jogo, hora_jogo in zip(jogos_organizados, hora):
-            arquivo_saida.write(f"{jogo} | {hora_jogo}\n")
+            arquivo_saida.write(f"Jogo {num_jogo} | {jogo} | {hora_jogo}\n")
+            num_jogo += 1
 
 
 def exibir_jogos():

@@ -1,6 +1,6 @@
-Chave 1: Eletrotécnica-2°Vesp | Edificações-2°Vesp | Informática-2°Mat | Eletrotécnica-1°A
-Chave 2: Eletrotécnica-2°Mat | Eletrotécnica-3°Mat | Informática-3°Mat | Edificações-3°Mat
-Chave 3: Informática-1°A | Edificações-1°A | Química-3°Mat | Edificações-3°Vesp
-Chave 4: Informática-1°B | Eletrotécnica-3°Vesp | Edificações-1°B | Química-1°A
-Chave 5: Química-2°Mat | Química-2°Vesp | Eletrotécnica-1°B | Informática-3°Vesp
-Chave 6: Química-3°Vesp | Edificações-2°Mat | Informática-2°Vesp | Química-1°B
+Chave 1: Química-2°Mat | Edificações-2°Mat | Informática-1°B | Eletrotécnica-1°A
+Chave 2: Edificações-3°Vesp | Eletrotécnica-2°Mat | Química-1°A | Edificações-2°Vesp
+Chave 3: Edificações-3°Mat | Edificações-1°B | Informática-2°Mat | Informática-3°Mat
+Chave 4: Química-3°Vesp | Química-1°B | Química-3°Mat | Informática-3°Vesp
+Chave 5: Informática-2°Vesp | Eletrotécnica-3°Mat | Eletrotécnica-1°B | Edificações-1°A
+Chave 6: Informática-1°A | Química-2°Vesp | Eletrotécnica-3°Vesp | Eletrotécnica-2°Vesp

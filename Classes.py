@@ -156,8 +156,6 @@ class Jogos:
         funcoes.organizar_horarios()
 
 
-
-
 class GerenciarCadastroAluno:
     def __init__(self, matricula):
         self.matricula = matricula
