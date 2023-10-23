@@ -15,11 +15,11 @@ while True:
     elif quem == 2:
         cadastro.acoes()
         break
-    #elif exclusivo para teste
+    # elif exclusivo para teste
     elif quem == 3:
-      pass
+        pass
     elif quem == 4:
-      pass
+        pass
   except ValueError:
     print("\033[031mdigite somente números\033[0m")
   

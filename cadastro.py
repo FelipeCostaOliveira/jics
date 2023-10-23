@@ -20,9 +20,17 @@ def cadastro():
   }
   while True:
     nome = input("Digite o nome do discente: ").capitalize().strip()
-    funcoes.validar_nome(nome)
+    while not nome.replace(" ", "").isalpha():
+        print("\033[31mnome inválido digite apenas letras ou espaços\033[0m")
+        nome = input("Digite o nome: ").capitalize().strip()
+
     matricula = input("Digite a matrícula do discente: ")
-    funcoes.validar_matricula(matricula, 10)
+    while True:
+        if matricula.isdigit() and len(matricula) >= 10:
+            break
+        else:
+            print(f"\033[31mMatrícula inválida, digite apenas números com no mínimo 10 algarismos.\033[0m")
+            matricula = input("Digite a matrícula: \n ")
     diretorio_raiz = os.getcwd()
     funcoes.verificar_matricula_em_arquivos(diretorio_raiz, matricula)
     print("\nCursos disponíveis:")
@@ -49,13 +57,20 @@ def cadastro():
 def cadastro_professor():
     prof = []
     nome = input("Digite seu nome: ").capitalize()
-    funcoes.validar_nome(nome)
+    while not nome.replace(" ", "").isalpha():
+        print("\033[31mnome inválido digite apenas letras ou espaços\033[0m")
+        nome = input("Digite o nome: ").capitalize().strip()
     matricula_prof = input("Digite seu número de matrícula: ")
-    funcoes.validar_matricula(matricula_prof, 5)
+    while True:
+        if matricula_prof.isdigit() and len(matricula_prof) >= 5:
+            break
+        else:
+            print(f"\033[31mMatrícula inválida, digite apenas números com no mínimo 5 algarismos.\033[0m")
+            matricula_prof = input("Digite a matrícula: \n ")
     diretorio_raiz = os.getcwd()
     funcoes.verificar_matricula_em_arquivos(diretorio_raiz, matricula_prof)
     senha = input("Digite sua senha: ")
-    servidor = professor(nome, matricula_prof, senha)
+    servidor = Professor(nome, matricula_prof, senha)
     prof.append(servidor)
     servidor.cad_professor(senha)
     print("\nCadastro realizado")
@@ -81,20 +96,20 @@ def acoes():
           elif escolha == 2:
             # editar aluno
             matricula_atual = input("Digite a matrícula atual do aluno: ")
-            gerenciar = gerenciar_cadastro_aluno(matricula_atual)
+            gerenciar = GerenciarCadastroAluno(matricula_atual)
             gerenciar.editar_aluno()
             break
           elif escolha == 3:
             # excluir aluno
             matricula_atual = input("Digite a matrícula atual do aluno: ")
-            gerenciar = gerenciar_cadastro_aluno(matricula_atual)
+            gerenciar = GerenciarCadastroAluno(matricula_atual)
             gerenciar.excluir_aluno()
             break
           elif escolha == 4:
             # gerar chaveamento
             caminho_raiz = os.getcwd()
             tamanho = 4
-            sistem = chave(caminho_raiz, tamanho)
+            sistem = Chave(caminho_raiz, tamanho)
             sistem.gerar_chave()
           elif escolha == 5:
             # exibir professores cadastrados
@@ -106,7 +121,7 @@ def acoes():
           elif escolha == 7:
               arquivo = "Arquivos/chaves.txt"
               inicio = datetime(2023, 11, 13, 10, 0)
-              sortear = jogos(arquivo, inicio)
+              sortear = Jogos(arquivo, inicio)
               sortear.gerar_jogos()
               sortear.exibir_jogos()
 

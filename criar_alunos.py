@@ -1,4 +1,6 @@
 from Classes import *
+
+
 def criar_alunos_em_todas_as_turmas():
     cursos = {
         "1": "Informática",
@@ -23,5 +25,6 @@ def criar_alunos_em_todas_as_turmas():
             aluno = Aluno(nome, matricula, curso_nome, turma_nome)
             aluno.cadastrar_aluno(turma_nome, curso_nome)
             print(f"Aluno cadastrado para {curso_nome} - {turma_nome}.\n")
+
 
 criar_alunos_em_todas_as_turmas()

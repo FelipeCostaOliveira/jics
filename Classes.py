@@ -3,11 +3,13 @@ import random
 import itertools
 from datetime import datetime, timedelta
 import funcoes
-# --------------RENAN / DENY---------------------#
+
+
 class Pessoa:
     def __init__(self, nome, matricula):
         self._nome = nome   # Convenção para indicar campo protegido
         self.__matricula = matricula  # Convenção para indicar campo privado
+
     def get_nome(self):
         return self._nome
         # Retorna o valor do campo "nome"
@@ -15,15 +17,18 @@ class Pessoa:
     def set_nome(self, novo_nome):
         self._nome = novo_nome
         # Define um novo valor para o campo "nome"
+
     def get_matricula(self):
         return self.__matricula
         # Retorna o valor do campo "matricula"
+
 
 class Aluno(Pessoa):
     def __init__(self, nome, matricula, curso, turma):
         super().__init__(nome, matricula)
         self.curso = curso   
-        self.__turma = turma 
+        self.__turma = turma
+
     def set_matricula(self, nova_matricula):
         self.__matricula = nova_matricula
         # Define um novo valor para o campo "matricula"
@@ -36,7 +41,6 @@ class Aluno(Pessoa):
         self.__turma = nova_turma
         # Define um novo valor para o campo "turma"
 
-    
     def exibir_cadastro(self, sala, serie):
         print(f"Nome: {self.get_nome()}")
         print(f"Matrícula: {self.get_matricula()}")
@@ -50,16 +54,18 @@ class Aluno(Pessoa):
         caminho = os.path.join(sala, f"{serie}.txt")
         # Abrir o arquivo em modo de adição
         with open(caminho, "a", encoding="utf-8") as arquivo :
-        # Escrever os dados do aluno no arquivo
+            # Escrever os dados do aluno no arquivo
             arquivo.write(f" Nome: {self.get_nome()}, Número Matrícula: {self.get_matricula()}, Curso: {sala} Turma: {serie}\n")
     
 
-class professor(Pessoa):
+class Professor(Pessoa):
     def __init__(self, nome, matricula, senha):
         super().__init__(nome, matricula)
         self.__senha = senha
+
         def get_senha(self):
           return self.__senha
+
         def set_senha(self, nova_senha):
           self.__senha = nova_senha
           
@@ -70,7 +76,8 @@ class professor(Pessoa):
         # Escrever os dados do professor no arquivo
         arquivo.write(f" Nome: {self.get_nome()}, Número Matrícula: {self.get_matricula()}, Senha: {senha}\n")
 
-class chave:
+
+class Chave:
     def __init__(self, equipe, tam_chave):
         self.caminho = equipe
         self.tam_chave = tam_chave
@@ -104,7 +111,8 @@ class chave:
                 chvs.write(chave)
                 print(chave)
 
-class jogos:
+
+class Jogos:
     def __init__(self, chaves, inicio):
         self.chaves = chaves
         self.inicio = inicio
@@ -167,7 +175,8 @@ class jogos:
         for jogo in jogos_ordenados:
             print(jogo)
 
-class gerenciar_cadastro_aluno:
+
+class GerenciarCadastroAluno:
     def __init__(self, matricula):
         self.matricula = matricula
 
@@ -222,11 +231,19 @@ class gerenciar_cadastro_aluno:
         trocar_nome = int(input("Deseja trocar o nome? (digite 1 p/sim ou 2 p/não)"))
         if trocar_nome == 1:
             novo_nome = input("Digite o novo nome: ")
+            while not novo_nome.replace(" ", "").isalpha():
+                print("\033[31mnome inválido digite apenas letras ou espaços\033[0m")
+                novo_nome = input("Digite o nome: ").capitalize().strip()
 
         trocar_matricula = int(input("Deseja trocar a matrícula? (digite 1 p/sim ou 2 p/não)"))
         if trocar_matricula == 1:
             nova_matricula = input("Digite a nova matricula: ")
-
+            while True:
+                if nova_matricula.isdigit() and len(nova_matricula) >= 10:
+                    break
+                else:
+                    print(f"\033[31mMatrícula inválida, digite apenas números com no mínimo 10 algarismos.\033[0m")
+                    nova_matricula = input("Digite a matrícula: \n ")
         trocar_curso = int(input("Deseja trocar o curso? (digite 1 p/sim ou 2 p/não)"))
         if trocar_curso == 1:
             print("\nCursos disponíveis:")
@@ -256,7 +273,10 @@ class gerenciar_cadastro_aluno:
                     linhas_filtradas = []
                     with open(caminho_arquivo, "r", encoding="utf-8") as arquivo_txt:
                         for linha in arquivo_txt:
+                            if len(linha.split(":")) < 3:
+                                continue
                             total = linha.split(":")[2].replace(", Curso", "").strip()
+
                             if total != self.matricula:
                                 linhas_filtradas.append(linha)
 
