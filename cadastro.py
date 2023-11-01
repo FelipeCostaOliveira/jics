@@ -104,6 +104,7 @@ def acoes():
             matricula_atual = input("Digite a matrícula atual do aluno: ")
             gerenciar = GerenciarCadastroAluno(matricula_atual)
             gerenciar.excluir_aluno()
+            
             break
           elif escolha == 4:
             # gerar chaveamento

@@ -1,3 +1,4 @@
  Nome: Aluno Informática 2°Vesp, Número Matrícula: 140001, Curso: Informática Turma: 2°Vesp
  Nome: Aluno Informática 2°Vesp, Número Matrícula: 140000000001, Curso: Informática Turma: 2°Vesp
  Nome: Aluno Informática 2°Vesp, Número Matrícula: 140000000001, Curso: Informática Turma: 2°Vesp
+ Nome: Aluno Informática 2°Vesp, Número Matrícula: 140000000001, Curso: Informática Turma: 2°Vesp

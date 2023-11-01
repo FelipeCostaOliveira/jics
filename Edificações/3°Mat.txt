@@ -1,3 +1,4 @@
  Nome: Aluno Edificações 3°Mat, Número Matrícula: 450001, Curso: Edificações Turma: 3°Mat
  Nome: Aluno Edificações 3°Mat, Número Matrícula: 450000000001, Curso: Edificações Turma: 3°Mat
  Nome: Aluno Edificações 3°Mat, Número Matrícula: 450000000001, Curso: Edificações Turma: 3°Mat
+ Nome: Aluno Edificações 3°Mat, Número Matrícula: 450000000001, Curso: Edificações Turma: 3°Mat

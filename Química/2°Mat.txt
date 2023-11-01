@@ -1,3 +1,4 @@
  Nome: Aluno Química 2°Mat, Número Matrícula: 330001, Curso: Química Turma: 2°Mat
  Nome: Aluno Química 2°Mat, Número Matrícula: 330000000001, Curso: Química Turma: 2°Mat
  Nome: Aluno Química 2°Mat, Número Matrícula: 330000000001, Curso: Química Turma: 2°Mat
+ Nome: Aluno Química 2°Mat, Número Matrícula: 330000000001, Curso: Química Turma: 2°Mat

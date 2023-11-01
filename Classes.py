@@ -197,6 +197,7 @@ class GerenciarCadastroAluno:
                             if len(partes) < 3:
                                 continue
                             matricula_na_linha = partes[2].replace(", Curso", "").strip()
+                            
                             if matricula_na_linha == self.matricula:
                                 nome_atual = partes[1].replace(", Número Matrícula", "").strip()
                                 matricula_atual = linha.split(":")[2].replace(", Curso", "").strip()
@@ -205,44 +206,46 @@ class GerenciarCadastroAluno:
                                 print(
                                     f"nome= {nome_atual} matricula= {matricula_atual} "
                                     f"curso= {curso_atual} turma= {turma_atual}")
-        self.excluir_aluno()
-        novo_nome = nome_atual
-        nova_matricula = matricula_atual
-        sala = curso_atual
-        serie = turma_atual
-        trocar_nome = int(input("Deseja trocar o nome? (digite 1 p/sim ou 2 p/não)"))
-        if trocar_nome == 1:
-            novo_nome = input("Digite o novo nome: ")
-            while not novo_nome.replace(" ", "").isalpha():
-                print("\033[31mnome inválido digite apenas letras ou espaços\033[0m")
-                novo_nome = input("Digite o nome: ").capitalize().strip()
+                                
+        if funcoes.verificar_existencia_matricula(caminho_diretorio, self.matricula):              
+            self.excluir_aluno()
+            novo_nome = nome_atual
+            nova_matricula = matricula_atual
+            sala = curso_atual
+            serie = turma_atual
+            trocar_nome = int(input("Deseja trocar o nome? (digite 1 p/sim ou 2 p/não)"))
+            if trocar_nome == 1:
+                novo_nome = input("Digite o novo nome: ")
+                while not novo_nome.replace(" ", "").isalpha():
+                    print("\033[31mnome inválido digite apenas letras ou espaços\033[0m")
+                    novo_nome = input("Digite o nome: ").capitalize().strip()
 
-        trocar_matricula = int(input("Deseja trocar a matrícula? (digite 1 p/sim ou 2 p/não)"))
-        if trocar_matricula == 1:
-            nova_matricula = input("Digite a nova matricula: ")
-            while True:
-                if nova_matricula.isdigit() and len(nova_matricula) >= 10:
-                    break
-                else:
-                    print(f"\033[31mMatrícula inválida, digite apenas números com no mínimo 10 algarismos.\033[0m")
-                    nova_matricula = input("Digite a matrícula: \n ")
-        trocar_curso = int(input("Deseja trocar o curso? (digite 1 p/sim ou 2 p/não)"))
-        if trocar_curso == 1:
-            print("\nCursos disponíveis:")
-            for key, value in cursos.items():
-                print(f"{key} - {value}")
-            novo_curso = input("\nDigite o número correspondente ao curso do discente: ").capitalize()
-            sala = cursos[novo_curso]
-        trocar_turma = int(input("Deseja trocar a turma? (digite 1 p/sim ou 2 p/não)"))
-        if trocar_turma == 1:
-            print("\nTurmas disponíveis:")
-            for key, value in turmas.items():
-                print(f"{key} - {value}")
-            nova_turma = input("Digite o número correspondente à turma do discente: ").capitalize()
-            serie = turmas[nova_turma]
+            trocar_matricula = int(input("Deseja trocar a matrícula? (digite 1 p/sim ou 2 p/não)"))
+            if trocar_matricula == 1:
+                nova_matricula = input("Digite a nova matricula: ")
+                while True:
+                    if nova_matricula.isdigit() and len(nova_matricula) >= 10:
+                        break
+                    else:
+                        print(f"\033[31mMatrícula inválida, digite apenas números com no mínimo 10 algarismos.\033[0m")
+                        nova_matricula = input("Digite a matrícula: \n ")
+            trocar_curso = int(input("Deseja trocar o curso? (digite 1 p/sim ou 2 p/não)"))
+            if trocar_curso == 1:
+                print("\nCursos disponíveis:")
+                for key, value in cursos.items():
+                    print(f"{key} - {value}")
+                novo_curso = input("\nDigite o número correspondente ao curso do discente: ").capitalize()
+                sala = cursos[novo_curso]
+            trocar_turma = int(input("Deseja trocar a turma? (digite 1 p/sim ou 2 p/não)"))
+            if trocar_turma == 1:
+                print("\nTurmas disponíveis:")
+                for key, value in turmas.items():
+                    print(f"{key} - {value}")
+                nova_turma = input("Digite o número correspondente à turma do discente: ").capitalize()
+                serie = turmas[nova_turma]
 
-        pessoa = Aluno(novo_nome, nova_matricula, sala, serie)
-        pessoa.cadastrar_aluno(serie, sala)
+            pessoa = Aluno(novo_nome, nova_matricula, sala, serie)
+            pessoa.cadastrar_aluno(serie, sala)
 
     def excluir_aluno(self):
         caminho_diretorio = os.getcwd()

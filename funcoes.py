@@ -61,6 +61,8 @@ def exibir_professores():
             print(linha)
 
 
+
+
 def organizar_horarios():
     caminho_jogos = os.path.join("Arquivos", "jogos.txt")
     hora = []
@@ -85,17 +87,23 @@ def organizar_horarios():
 
     # Reorganizar os jogos em ordem alternada
     jogos_organizados = []
-    num_jogos_por_chave = len(jogos_chaves[chaves[0]])
+    
+    # Verificar o número máximo de jogos por chave
+    num_jogos_por_chave = len(jogos_chaves[chaves[0]]) if chaves else 0
+    
     for i in range(num_jogos_por_chave):
         for chave in chaves:
-            jogos_organizados.append(jogos_chaves[chave][i])
-
+            # Verificar se o índice 'i' é válido para a lista jogos_chaves[chave]
+            if i < len(jogos_chaves[chave]):
+                jogos_organizados.append(jogos_chaves[chave][i])
+    
     # Escrever os jogos reorganizados em um novo arquivo
     with open(caminho_jogos, "w", encoding="utf-8") as arquivo_saida:
         num_jogo = 1
         for jogo, hora_jogo in zip(jogos_organizados, hora):
             arquivo_saida.write(f"Jogo {num_jogo} | {jogo} | {hora_jogo}\n")
             num_jogo += 1
+
 
 
 def exibir_jogos():
@@ -109,3 +117,19 @@ def exibir_jogos():
 def gerar_dir(nome_dir):
     if not os.path.exists(nome_dir):
         os.makedirs(nome_dir)
+
+def verificar_existencia_matricula(caminho_diretorio, matricula):
+    while True:
+        for pasta, _, arquivos in os.walk(caminho_diretorio):
+            for arquivo in arquivos:
+                if arquivo.endswith(".txt"):
+                    caminho_arquivo = os.path.join(pasta, arquivo)
+                    with open(caminho_arquivo, "r", encoding="utf-8") as arquivo_txt:
+                        conteudo = arquivo_txt.read()
+                        for linha in conteudo.splitlines():
+                            if linha.strip() == "":
+                                break
+                            if len(linha.split(":")) >= 3:
+                                while matricula == linha.split(":")[2].replace(", Curso", "").strip():
+                                    return True
+        break
