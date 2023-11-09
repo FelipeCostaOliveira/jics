@@ -1,7 +1,7 @@
 from Classes import *
 import os
 import funcoes
-
+from excessoes import *
 
 def cadastro():
   cursos = {
@@ -36,11 +36,21 @@ def cadastro():
     print("\nCursos disponíveis:")
     for key, value in cursos.items():
       print(f"{key} - {value}")
-    curso = input("\nDigite o número correspondente ao curso do discente: ").capitalize()
+      
+    try:
+      curso = int(input("\nDigite o número correspondente ao curso do discente: ").capitalize())
+      option(curso, 4, 1)
+    except opcaoException:
+       print("\033[031mdigite somente números de 1 a 4\033[0m")
     print("\nTurmas disponíveis:")
+    
     for key, value in turmas.items():
       print(f"{key} - {value}")
-    turma = input("Digite o número correspondente à turma do discente: ").capitalize()
+    try:
+      turma = input("Digite o número correspondente à turma do discente: ").capitalize()
+    except opcaoException:
+      print("\033[031mdigite somente números de 1 a 4\033[0m")
+       
     if curso in cursos and turma in turmas:
       sala = cursos[curso]
       serie = turmas[turma]
@@ -134,6 +144,3 @@ def acoes():
             print("Opção inválida, digite apenas números de 1 a 8")
         except ValueError:
             print("\033[031mDigite somente números\033[0m")
-
-
-
