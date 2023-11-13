@@ -19,18 +19,21 @@ def cadastro():
     "6": "3°Vesp",
   }
   while True:
-    nome = input("Digite o nome do discente: ").capitalize().strip()
-    while not nome.replace(" ", "").isalpha():
-        print("\033[31mnome inválido digite apenas letras ou espaços\033[0m")
-        nome = input("Digite o nome: ").capitalize().strip()
+    try:
+      nome = input("Digite o nome do discente: ").capitalize().strip()
+      name(nome)
+    except nomeException:
+       while nomeException:
+          print("\033[31mnome inválido digite apenas letras ou espaços\033[0m")
+          nome = input("Digite o nome do discente: ").capitalize().strip()
+    try:
+      matricula = input("Digite a matrícula do discente: ")
+      mat(matricula, 10)
+    except matriculaException:
+       while matriculaException:
+          print(f"\033[31mMatrícula inválida, digite apenas números com no mínimo 10 algarismos.\033[0m")
+          matricula = input("Digite a matrícula: \n ")
 
-    matricula = input("Digite a matrícula do discente: ")
-    while True:
-        if matricula.isdigit() and len(matricula) >= 10:
-            break
-        else:
-            print(f"\033[31mMatrícula inválida, digite apenas números com no mínimo 10 algarismos.\033[0m")
-            matricula = input("Digite a matrícula: \n ")
     diretorio_raiz = os.getcwd()
     funcoes.verificar_matricula_em_arquivos(diretorio_raiz, matricula)
     print("\nCursos disponíveis:")
@@ -66,17 +69,24 @@ def cadastro():
 
 def cadastro_professor():
     prof = []
-    nome = input("Digite seu nome: ").capitalize()
-    while not nome.replace(" ", "").isalpha():
+    try:
+      nome = input("Digite seu nome: ").capitalize()
+      name(nome)
+    except nomeException:
+       while nomeException:
         print("\033[31mnome inválido digite apenas letras ou espaços\033[0m")
         nome = input("Digite o nome: ").capitalize().strip()
-    matricula_prof = input("Digite seu número de matrícula: ")
-    while True:
-        if matricula_prof.isdigit() and len(matricula_prof) >= 5:
-            break
-        else:
-            print(f"\033[31mMatrícula inválida, digite apenas números com no mínimo 5 algarismos.\033[0m")
-            matricula_prof = input("Digite a matrícula: \n ")
+    
+    try:
+      matricula_prof = input("Digite seu número de matrícula: ")
+      mat(matricula_prof, 5)
+    except matriculaException:
+       while matriculaException:
+          print(f"\033[31mMatrícula inválida, digite apenas números com no mínimo 5 algarismos.\033[0m")
+          matricula_prof = input("Digite a matrícula: \n ")
+    
+    
+            
     diretorio_raiz = os.getcwd()
     funcoes.verificar_matricula_em_arquivos(diretorio_raiz, matricula_prof)
     senha = input("Digite sua senha: ")
