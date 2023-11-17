@@ -49,6 +49,7 @@ class Aluno(Pessoa):
         print()
 
     def cadastrar_aluno(self, serie, sala):
+        
         funcoes.gerar_dir(sala)
 
         caminho = os.path.join(sala, f"{serie}.txt")
