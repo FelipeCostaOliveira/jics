@@ -1,2 +1,3 @@
  Nome: Aluno Informática 1°A, Número Matrícula: 110000000001, Curso: Informática Turma: 1°A
  Nome: Felipe, Número Matrícula: 12345678999898, Curso: Informática Turma: 1°A
+ Nome: Re, Número Matrícula: 1212121212121, Curso: Informática Turma: 1°A
